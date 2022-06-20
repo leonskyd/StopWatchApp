@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wordy">
         <activity
+            android:name=".ui.ListActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>

@@ -2,12 +2,14 @@ package com.example.wordy
 
 import android.app.Application
 import android.content.Context
+import androidx.room.Room
+import com.example.wordy.database.SavedWordsDatabase
 import com.example.wordy.dependencies.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
-class WordyApp: Application() {
+class WordyApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -20,4 +22,5 @@ class WordyApp: Application() {
 }
 
 val Context.app: WordyApp
-    get() = applicationContext as WordyApp
+get() = applicationContext as WordyApp
+

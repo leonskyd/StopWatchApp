@@ -5,11 +5,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.wordy.WordData
 import com.example.wordy.data.Repository
+import com.example.wordy.database.DatabaseInteractor
+import com.example.wordy.database.WordEntity
 import com.example.wordy.model.DataToShow
 import kotlinx.coroutines.*
 
 class MainViewModel(
-    private var retrofitRepository: Repository
+    private var retrofitRepository: Repository,
+    private var interactor: DatabaseInteractor
 ): ViewModel()
 
 {
@@ -39,5 +42,15 @@ class MainViewModel(
             liveDataList.postValue(dataToShow)
         }
     }
+
+    fun saveWord(word: String) = viewModelScope.launch(Dispatchers.IO) {
+        interactor.saveWordToDb(word)
+    }
+
+    fun getAllFromDatabase(): List<WordEntity> {
+        return interactor.getWordsList()
+    }
+
+
 }
 
